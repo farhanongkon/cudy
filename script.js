@@ -40,12 +40,12 @@ function drawBird() {
   ctx.drawImage(birdImage, router.x, router.y, router.width, router.height);
 }
 
-// Create obstacles with smaller size for easier gameplay
+// Create obstacles with black color and no yellow border
 function createObstacle() {
-  const gap = 300;  // Increased gap size to make it easier to pass
-  const height = Math.floor(Math.random() * (canvas.height - gap - 100)) + 50;  // Reduced height range to make the pipes shorter
-  obstacles.push({ x: canvas.width, y: 0, width: 40, height: height }); // Top pipe
-  obstacles.push({ x: canvas.width, y: height + gap, width: 40, height: canvas.height - height - gap }); // Bottom pipe
+  const gap = 250;
+  const height = Math.floor(Math.random() * (canvas.height - gap));
+  obstacles.push({ x: canvas.width, y: 0, width: 40, height: height });
+  obstacles.push({ x: canvas.width, y: height + gap, width: 40, height: canvas.height - height - gap });
 }
 
 // Draw obstacles with gradient look and no yellow border
@@ -75,7 +75,13 @@ function drawObstacles() {
 function drawScoreAndHighScore() {
   ctx.fillStyle = '#ffcc00';
   ctx.font = '12px "Press Start 2P"';
-  ctx.fillText(`Score: ${score}`, canvas.width - 100, 20);
+
+  // Adjust the x-position dynamically based on score length
+  const scoreText = `Score: ${score}`;
+  const scoreWidth = ctx.measureText(scoreText).width;
+
+  // Display the score towards the right edge of the canvas, but leaving some space
+  ctx.fillText(scoreText, canvas.width - scoreWidth - 20, 20); // 20px padding from the right edge
   ctx.fillText(`High Score: ${highScore}`, 10, 20);
 }
 
@@ -108,7 +114,7 @@ function gameLoop() {
 
   if (isGameOver) {
     gameOverText.innerText = 'Cudy Game';
-    gameOverStatus.innerText = `Game Over  Score: ${score}`; // Show the current score after game over
+    gameOverStatus.innerText = `Game Over - Score: ${score}`; // Show the current score after game over
     gameOverBox.style.display = 'block';
     retryButton.style.display = 'block';
     return;
