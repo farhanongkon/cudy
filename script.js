@@ -40,12 +40,12 @@ function drawBird() {
   ctx.drawImage(birdImage, router.x, router.y, router.width, router.height);
 }
 
-// Create obstacles with black color and no yellow border
+// Create obstacles with smaller size for easier gameplay
 function createObstacle() {
-  const gap = 250;
-  const height = Math.floor(Math.random() * (canvas.height - gap));
-  obstacles.push({ x: canvas.width, y: 0, width: 40, height: height });
-  obstacles.push({ x: canvas.width, y: height + gap, width: 40, height: canvas.height - height - gap });
+  const gap = 300;  // Increased gap size to make it easier to pass
+  const height = Math.floor(Math.random() * (canvas.height - gap - 100)) + 50;  // Reduced height range to make the pipes shorter
+  obstacles.push({ x: canvas.width, y: 0, width: 40, height: height }); // Top pipe
+  obstacles.push({ x: canvas.width, y: height + gap, width: 40, height: canvas.height - height - gap }); // Bottom pipe
 }
 
 // Draw obstacles with gradient look and no yellow border
