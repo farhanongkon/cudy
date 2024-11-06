@@ -15,7 +15,7 @@ birdImage.src = 'https://i.postimg.cc/gkPyP0w7/bird.png'; // Bird image
 let backgroundImg = new Image();
 backgroundImg.src = 'https://i.postimg.cc/Vs9rnW67/bg.webp'; // Background image
 
-let router = { x: 50, y: 300, width: 70, height: 56, gravity: 0.35, lift: -8, velocity: 0 };  // Lower lift and higher gravity
+let router = { x: 50, y: 300, width: 70, height: 56, gravity: 0.25, lift: -6, velocity: 0 };  // Lower gravity and higher lift for easier gameplay
 let obstacles = [];
 let isGameOver = false;
 let score = 0;
