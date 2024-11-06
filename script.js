@@ -11,17 +11,18 @@ const startScreen = document.getElementById('startScreen');
 const startButton = document.getElementById('startButton');
 
 let birdImage = new Image();
-birdImage.src = 'https://i.postimg.cc/SKM85XLj/bird.png'; // New bird image
+birdImage.src = 'https://i.postimg.cc/SKM85XLj/bird.png'; // Bird image
 let backgroundImg = new Image();
-backgroundImg.src = 'https://i.postimg.cc/Vs9rnW67/bg.webp'; // New background image
+backgroundImg.src = 'https://i.postimg.cc/Vs9rnW67/bg.webp'; // Background image
 
-let router = { x: 50, y: 300, width: 70, height: 56, gravity: 0.35, lift: -10, velocity: 0 }; // Bigger size for the bird
+let router = { x: 50, y: 300, width: 70, height: 56, gravity: 0.35, lift: -10, velocity: 0 };
 let obstacles = [];
 let isGameOver = false;
 let score = 0;
 let highScore = localStorage.getItem('highScore') || 0;
+let pipeSpeed = 1.5; // Reduced pipe speed for easier gameplay
 
-// Function to start the game
+// Start game function
 function startGame() {
   startScreen.style.display = 'none';
   gameOverBox.style.display = 'none';
@@ -31,24 +32,25 @@ function startGame() {
   obstacles = [];
   score = 0;
   isGameOver = false;
+  pipeSpeed = 1.5; // Reset the pipe speed
   requestAnimationFrame(gameLoop);
   document.getElementById('gameContainer').style.display = 'block';
 }
 
-// Draw bird with larger size
+// Draw bird with updated size
 function drawBird() {
   ctx.drawImage(birdImage, router.x, router.y, router.width, router.height);
 }
 
-// Create obstacles with black color and no yellow border
+// Create obstacles with varying heights and larger gaps
 function createObstacle() {
-  const gap = 250;
-  const height = Math.floor(Math.random() * (canvas.height - gap));
-  obstacles.push({ x: canvas.width, y: 0, width: 40, height: height });
-  obstacles.push({ x: canvas.width, y: height + gap, width: 40, height: canvas.height - height - gap });
+  const gap = Math.random() * 100 + 200; // Increase gap between pipes randomly
+  const height = Math.floor(Math.random() * (canvas.height - gap)); // Random height for the pipe
+  obstacles.push({ x: canvas.width, y: 0, width: 40, height: height }); // Top pipe
+  obstacles.push({ x: canvas.width, y: height + gap, width: 40, height: canvas.height - height - gap }); // Bottom pipe
 }
 
-// Draw obstacles with gradient look and no yellow border
+// Draw obstacles with the gradient style
 function drawObstacles() {
   const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
   gradient.addColorStop(0, '#333');
@@ -57,7 +59,7 @@ function drawObstacles() {
   ctx.fillStyle = gradient;
   obstacles.forEach(obstacle => {
     ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-    obstacle.x -= 1.5;
+    obstacle.x -= pipeSpeed; // Move the pipes at a slower speed
   });
 
   if (obstacles.length && obstacles[0].x < -40) {
@@ -71,7 +73,7 @@ function drawObstacles() {
   }
 }
 
-// Draw score and high score
+// Draw the score and high score
 function drawScoreAndHighScore() {
   ctx.fillStyle = '#ffcc00';
   ctx.font = '12px "Press Start 2P"';
@@ -79,7 +81,7 @@ function drawScoreAndHighScore() {
   ctx.fillText(`High Score: ${highScore}`, 10, 20);
 }
 
-// Check for collision
+// Check for collision with pipes or boundaries
 function checkCollision() {
   if (router.y + router.height >= canvas.height || router.y <= 0) {
     isGameOver = true;
@@ -131,7 +133,7 @@ function flap() {
   }
 }
 
-// Event listeners
+// Event listeners for click and retry
 canvas.addEventListener('click', flap);
 retryButton.addEventListener('click', startGame);
 startButton.addEventListener('click', startGame);
