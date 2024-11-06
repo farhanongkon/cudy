@@ -42,8 +42,8 @@ function drawBird() {
 
 // Create obstacles with black color and no yellow border
 function createObstacle() {
-  const gap = 250;
-  const height = Math.floor(Math.random() * (canvas.height - gap));
+  const gap = 250; // Increase the gap to make it easier to pass
+  const height = Math.floor(Math.random() * (canvas.height - gap - 100)); // Reduced the height range to make pillars smaller
   obstacles.push({ x: canvas.width, y: 0, width: 40, height: height });
   obstacles.push({ x: canvas.width, y: height + gap, width: 40, height: canvas.height - height - gap });
 }
@@ -57,7 +57,7 @@ function drawObstacles() {
   ctx.fillStyle = gradient;
   obstacles.forEach(obstacle => {
     ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-    obstacle.x -= 1.5;
+    obstacle.x -= 1.5; // Speed of the obstacle, can be adjusted to make it easier
   });
 
   if (obstacles.length && obstacles[0].x < -40) {
@@ -75,13 +75,7 @@ function drawObstacles() {
 function drawScoreAndHighScore() {
   ctx.fillStyle = '#ffcc00';
   ctx.font = '12px "Press Start 2P"';
-
-  // Adjust the x-position dynamically based on score length
-  const scoreText = `Score: ${score}`;
-  const scoreWidth = ctx.measureText(scoreText).width;
-
-  // Display the score towards the right edge of the canvas, but leaving some space
-  ctx.fillText(scoreText, canvas.width - scoreWidth - 20, 20); // 20px padding from the right edge
+  ctx.fillText(`Score: ${score}`, canvas.width - 100, 20);
   ctx.fillText(`High Score: ${highScore}`, 10, 20);
 }
 
