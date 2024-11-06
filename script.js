@@ -11,7 +11,7 @@ const startScreen = document.getElementById('startScreen');
 const startButton = document.getElementById('startButton');
 
 let birdImage = new Image();
-birdImage.src = 'https://i.postimg.cc/gkPyP0w7/bird.png'; // New bird image
+birdImage.src = 'https://i.postimg.cc/SKM85XLj/bird.png'; // New bird image
 let backgroundImg = new Image();
 backgroundImg.src = 'https://i.postimg.cc/Vs9rnW67/bg.webp'; // New background image
 
