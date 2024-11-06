@@ -1,0 +1,110 @@
+/* General Body and Page Style */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #87CEEB; /* Light Blue Sky Color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Press Start 2P", cursive;
+}
+
+/* Start Screen Styles */
+#startScreen {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#startScreen h1 {
+  font-size: 48px;
+  color: #ffcc00;
+  margin-bottom: 20px;
+}
+
+#startButton {
+  background-color: #000;
+  color: #ffcc00;
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  padding: 15px 30px;
+  border: 2px solid #ffcc00;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#startButton:hover {
+  background-color: #ffcc00;
+  color: #000;
+}
+
+/* Main Game Area Styles */
+#gameContainer {
+  position: relative;
+  display: none; /* Initially hidden until game starts */
+}
+
+canvas {
+  border: 2px solid #000;
+  background-color: #4ca1af; /* Background color for the game area */
+}
+
+/* Game Over Box Styles */
+.game-over-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000;
+  color: #ffcc00;
+  padding: 10px 15px; /* Smaller padding */
+  text-align: center;
+  border: 4px solid #ffcc00;
+  font-family: "Press Start 2P", cursive;
+  width: 230px; /* Slightly smaller width */
+  height: 150px; /* Smaller height */
+  display: none; /* Hidden initially */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Balanced spacing */
+  align-items: center; /* Center content horizontally */
+}
+
+.game-over-box .text {
+  font-size: 24px; /* Bigger font size for "Cudy Game" */
+  margin-bottom: 5px; /* Adjusted spacing */
+}
+
+#gameOverStatus {
+  font-size: 18px;
+  margin-bottom: 10px; /* Reduced space between Game Over and Retry */
+}
+
+/* Retry Button Styles */
+#retryButton {
+  background-color: #ffcc00; /* Yellow background */
+  color: #000; /* Black text color */
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px; /* Bigger font size for retry button */
+  border: 2px solid #ffcc00;
+  padding: 10px 25px; /* Smaller padding */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 130px; /* Smaller width */
+  text-align: center; /* Center the text inside the button */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#retryButton:hover {
+  background-color: #ffd700; /* Lighter yellow on hover */
+  color: #000;
+}
