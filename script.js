@@ -15,12 +15,12 @@ birdImage.src = 'https://i.postimg.cc/gkPyP0w7/bird.png'; // Bird image
 let backgroundImg = new Image();
 backgroundImg.src = 'https://i.postimg.cc/Vs9rnW67/bg.webp'; // Background image
 
-let router = { x: 50, y: 300, width: 70, height: 56, gravity: 0.35, lift: -10, velocity: 0 };
+let router = { x: 50, y: 300, width: 70, height: 56, gravity: 0.25, lift: -12, velocity: 0 };  // Adjusted gravity and lift
 let obstacles = [];
 let isGameOver = false;
 let score = 0;
 let highScore = localStorage.getItem('highScore') || 0;
-let pipeSpeed = 1.5; // Reduced pipe speed for easier gameplay
+let pipeSpeed = 1; // Slower pipe speed for easier gameplay
 
 // Start game function
 function startGame() {
@@ -32,7 +32,7 @@ function startGame() {
   obstacles = [];
   score = 0;
   isGameOver = false;
-  pipeSpeed = 1.5; // Reset the pipe speed
+  pipeSpeed = 1; // Reset the pipe speed
   requestAnimationFrame(gameLoop);
   document.getElementById('gameContainer').style.display = 'block';
 }
@@ -42,9 +42,9 @@ function drawBird() {
   ctx.drawImage(birdImage, router.x, router.y, router.width, router.height);
 }
 
-// Create obstacles with varying heights and larger gaps
+// Create obstacles with wider gap and smaller sizes
 function createObstacle() {
-  const gap = Math.random() * 100 + 200; // Increase gap between pipes randomly
+  const gap = Math.random() * 150 + 250; // Increased gap size
   const height = Math.floor(Math.random() * (canvas.height - gap)); // Random height for the pipe
   obstacles.push({ x: canvas.width, y: 0, width: 40, height: height }); // Top pipe
   obstacles.push({ x: canvas.width, y: height + gap, width: 40, height: canvas.height - height - gap }); // Bottom pipe
