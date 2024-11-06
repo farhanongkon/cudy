@@ -40,7 +40,7 @@ function drawBird() {
   ctx.drawImage(birdImage, router.x, router.y, router.width, router.height);
 }
 
-// Create obstacles with black color and no yellow border
+// Create obstacles with ash color gradient
 function createObstacle() {
   const gap = 250; // Increase the gap to make it easier to pass
   const height = Math.floor(Math.random() * (canvas.height - gap - 100)); // Reduced the height range to make pillars smaller
@@ -48,11 +48,12 @@ function createObstacle() {
   obstacles.push({ x: canvas.width, y: height + gap, width: 40, height: canvas.height - height - gap });
 }
 
-// Draw obstacles with gradient look and no yellow border
+// Draw obstacles with ash color gradient
 function drawObstacles() {
+  // Ash color gradient (light gray to dark gray)
   const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-  gradient.addColorStop(0, '#333');
-  gradient.addColorStop(1, '#111');
+  gradient.addColorStop(0, '#B0B0B0');  // Light ash gray
+  gradient.addColorStop(1, '#707070');  // Darker ash gray
 
   ctx.fillStyle = gradient;
   obstacles.forEach(obstacle => {
