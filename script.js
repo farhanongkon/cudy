@@ -42,7 +42,7 @@ function drawBird() {
 
 // Create obstacles with green gradient
 function createObstacle() {
-  const gap = 250; // Increase the gap to make it easier to pass
+  const gap = 300; // Increase the gap to make it easier to pass
   const height = Math.floor(Math.random() * (canvas.height - gap - 100)); // Reduced the height range to make pillars smaller
   obstacles.push({ x: canvas.width, y: 0, width: 40, height: height });
   obstacles.push({ x: canvas.width, y: height + gap, width: 40, height: canvas.height - height - gap });
