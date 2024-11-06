@@ -108,7 +108,7 @@ function gameLoop() {
 
   if (isGameOver) {
     gameOverText.innerText = 'Cudy Game';
-    gameOverStatus.innerText = `Game Over - Score: ${score}`; // Show the current score after game over
+    gameOverStatus.innerText = `Game Over  Score: ${score}`; // Show the current score after game over
     gameOverBox.style.display = 'block';
     retryButton.style.display = 'block';
     return;
