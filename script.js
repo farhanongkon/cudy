@@ -13,7 +13,7 @@ const startButton = document.getElementById('startButton');
 let birdImage = new Image();
 birdImage.src = 'https://i.postimg.cc/fLK9LGWY/Cudy-WR300-N300-Wi-Fi-Router-2-600x600-removebg-preview.png'; // New bird image
 let backgroundImg = new Image();
-backgroundImg.src = 'https://i.postimg.cc/Vs9rnW67/bg.webp'; // New background image
+backgroundImg.src = 'https://i.postimg.cc/x1nqks7R/54a81de882e75-thumb900.webp'; // New background image
 
 let router = { x: 50, y: 300, width: 70, height: 56, gravity: 0.35, lift: -10, velocity: 0 }; // Bigger size for the bird
 let obstacles = [];
