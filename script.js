@@ -11,7 +11,7 @@ const startScreen = document.getElementById('startScreen');
 const startButton = document.getElementById('startButton');
 
 let birdImage = new Image();
-birdImage.src = 'https://i.postimg.cc/MHgg06BC/Cudy-TR1200-AC1200-Wi-Fi-Mini-Travel-Router-3-600x600-removebg-preview.png'; // New bird image
+birdImage.src = 'https://i.postimg.cc/fLK9LGWY/Cudy-WR300-N300-Wi-Fi-Router-2-600x600-removebg-preview.png'; // New bird image
 let backgroundImg = new Image();
 backgroundImg.src = 'https://i.postimg.cc/Vs9rnW67/bg.webp'; // New background image
 
